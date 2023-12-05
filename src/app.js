@@ -10,17 +10,20 @@ const port = Number(process.env.PORT || 8089)
 const app = express();
 
 const whitelist = [
-  // TODO whitelist
-]
+  'http://localhost:8081','http://localhost',
+  
+];
 
-app.use(cors({
-  origin: function (origin, callback) {
-    const allowed = whitelist.indexOf(origin) !== -1
-    if (allowed) return callback(null, true);
+// app.use(cors({
+//   origin: function (origin, callback) {
+//     const allowed = whitelist.indexOf(origin) !== -1
+//     if (allowed) return callback(null, true);
 
-    callback(new Error('Not allowed by CORS'))
-  }
-}))
+//     callback(new Error('Not allowed by CORS'))
+//   }
+// }))
+
+app.use(cors());
 
 const swaggerConfig = {
   appRoot: __dirname,
